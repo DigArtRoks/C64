@@ -17,11 +17,11 @@ button is pressed, the corresponding character (UDLRF) is highlighted.
   to run it on a C64 or emulator.
 * **basic_joystick_test.prg**: Tokenized version of the program. Can be
   directly run on a C64 or emulator.
-* **basic_joystick_test_list.png**: Screenshot of the BASIC program
+* **basic_joystick_test_list.png**: Picture of the BASIC program
   listing. For those who wants the full experience and want to type
   it over.
   
-  ![Screenshot of the listing](basic_joystick_test_list.png)
+  ![Picture of the listing](basic_joystick_test_list.png)
 
   The characters in reverse text are control characters. They can be 
   entered (in quote mode) using the following lookup table.
