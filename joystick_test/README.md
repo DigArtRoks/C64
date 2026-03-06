@@ -8,20 +8,20 @@ button is pressed, the corresponding character (UDLRF) is highlighted.
 
 ## Deliverables
 
-* **basic_joystick_test.png**: Screenshot of the application in action.
+* **joystick_test.png**: Screenshot of the application in action.
 
-  ![Screenshot of the application](basic_joystick_test.png)
+  ![Screenshot of the application](joystick_test.png)
 
-* **basic_joystick_test.bas**: The BASIC program in ASCII format,
+* **joystick_test.bas**: The BASIC program in ASCII format,
   annotated with comments, to be tokenized with *VICE petcat* in order 
   to run it on a C64 or emulator.
-* **basic_joystick_test.prg**: Tokenized version of the program. Can be
+* **joystick_test.prg**: Tokenized version of the program. Can be
   directly run on a C64 or emulator.
-* **basic_joystick_test_list.png**: Picture of the BASIC program
+* **joystick_test_list.png**: Picture of the BASIC program
   listing. For those who wants the full experience and want to type
   it over.
   
-  ![Picture of the listing](basic_joystick_test_list.png)
+  ![Picture of the listing](joystick_test_list.png)
 
   The characters in reverse text are control characters. They can be 
   entered (in quote mode) using the following lookup table.
@@ -54,7 +54,7 @@ the screen remains visually stable. I.e. no flickering or scrolling occurs.
   to your environment variables.
 * Tokenize the source code with the following command:
 
-  `petcat -w2 -o basic_joystick_test.prg -f -- basic_joystick_test.bas`
+  `petcat -w2 -o joystick_test.prg -f -- joystick_test.bas`
 
 ## References
 
