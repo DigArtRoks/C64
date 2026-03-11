@@ -8,20 +8,20 @@ button is pressed, the corresponding character (UDLRF) is highlighted.
 
 ## Deliverables
 
-* **joystick_test.png**: Screenshot of the application in action.
+* **res/joystick_test.png**: Screenshot of the application in action.
 
-  ![Screenshot of the application](joystick_test.png)
+  ![Screenshot of the application](res/joystick_test.png)
 
-* **joystick_test.bas**: The BASIC program in ASCII format,
+* **src/joystick_test.bas**: The BASIC program in ASCII format,
   annotated with comments, to be tokenized with *VICE petcat* in order 
   to run it on a C64 or emulator.
-* **joystick_test.prg**: Tokenized version of the program. Can be
+* **bin/joystick_test.prg**: Tokenized version of the program. Can be
   directly run on a C64 or emulator.
-* **joystick_test_list.png**: Picture of the BASIC program
+* **res/joystick_test_list.png**: Picture of the BASIC program
   listing. For those who wants the full experience and want to type
   it over.
   
-  ![Picture of the listing](joystick_test_list.png)
+  ![Picture of the listing](res/joystick_test_list.png)
 
   The characters in reverse text are control characters. They can be 
   entered (in quote mode) using the following lookup table.
@@ -54,10 +54,10 @@ the screen remains visually stable. I.e. no flickering or scrolling occurs.
   to your environment variables.
 * Tokenize the source code with the following command:
 
-  `petcat -w2 -o joystick_test.prg -f -- joystick_test.bas`
+  `petcat -w2 -o bin/basic_joystick_test.prg -f -- src/basic_joystick_test.bas`
 
 ## References
 
 * Inspired by: https://www.c64-wiki.com/wiki/Joystick
-* VICE Emulator: https://vice-emu.sourceforge.io/
+* VICE Emulator: https://vice-emu.sourceforge.io
 
