@@ -66,7 +66,7 @@ even if more than 5 are pressed at once.
   annotated with comments, to be tokenized with *VICE petcat* in order 
   to run it on a C64 or emulator.
 * **bin/keyboard_test.prg**: Tokenized version of the program. Can be
-  directly run on a C64 or emulator.
+  run directly on a C64 or emulator.
 * **res/keyboard_test_list.png**: Picture of the BASIC program
   listing. For those who wants the full experience and want to type
   it over.
@@ -84,9 +84,6 @@ even if more than 5 are pressed at once.
   | E              | Ctrl + 2           | White color       |
   | \|             | C= + 6             | Light Green color |
   | Diamond        | C= + 7             | Light Blue color  |
-  | R              | Ctrl + 9           | Reverse on        |
-  | _              | Ctrl + 0           | Reverse off       |
-
 
 ## Code outline
 
@@ -105,6 +102,19 @@ the screen remains visually stable. I.e. no flickering or scrolling occurs.
 * Tokenize the source code with the following command:
 
   `petcat -w2 -o bin/keyboard_test.prg -f -- src/keyboard_test.bas`
+
+## Extra: Assembly version
+* **bin/keyboard_test_asm.prg**: A version of the application written in machine
+  language. Can be run directly on a C64 or emulator.
+
+Exactly the same look as the BASIC version of the application. Not the same
+feeling. This version is much faster and very responsive. It scans all the
+keys in about 3.5ms. That is more than 5 times per screen update on a PAL 
+machine. 
+
+It is also 368 bytes smaller than the bin/keyboard_test.prg.
+
+Source code (assembly compiled with cc65) is not (yet) publicly available.
 
 ## References
 
