@@ -6,13 +6,26 @@ Small C64 BASIC application visualising the status of the keys in a user
 friendly manner. When one or more keys are pushed, the corresponding
 keylabel on the screen is highlighted.
 
-## Performance
+## Limitations
+
+### Performance
 
 As this is a BASIC program, the performance is rather slow. I.e. one
 iteration of the main loop, updating the status of the 64 keys takes
 about 1.7s on a PAL version of the C64. In practice, it means that
 you need to hold the keys a while before the screen reflects the
 pressed keys.
+
+### RESTORE key
+
+The state of the RESTORE key can not be checked with this application.
+The RESTORE key is a special one. It is not connected to the keyboard matrix,
+but directly to the NMI (non maskable interrupt) pin of the 6502
+processor. On top of it, only the push down event of the button triggers the 
+NMI handler. Holding the key down has no effect. Hence, it is in a BASIC
+application not straightforward to detect the key down event or the state
+of the RESTORE key.
+
 
 ## Ghost keys
 
@@ -103,19 +116,6 @@ the screen remains visually stable. I.e. no flickering or scrolling occurs.
 
   `petcat -w2 -o bin/keyboard_test.prg -f -- src/keyboard_test.bas`
 
-## Extra: Assembly version
-* **bin/keyboard_test_asm.prg**: A version of the application written in machine
-  language. Can be run directly on a C64 or emulator.
-
-Exactly the same look as the BASIC version of the application. Not the same
-feeling. This version is much faster and very responsive. It scans all the
-keys in about 3.5ms. That is more than 5 times per screen update on a PAL 
-machine. 
-
-It is also 368 bytes smaller than the bin/keyboard_test.prg.
-
-Source code (assembly compiled with cc65) is not (yet) publicly available.
-
 ## References
 
 * Inspired by: https://www.c64-wiki.com/wiki/Keyboard
@@ -123,3 +123,34 @@ Source code (assembly compiled with cc65) is not (yet) publicly available.
   The screen layout is based on the table on this webpage.
 * VICE Emulator: https://vice-emu.sourceforge.io
 
+
+# Extra:  Assembly version of C64 Keyboard Test
+
+## Description
+
+Exactly the same look as the BASIC version of the application. Not the same
+feeling. This version is much faster and very responsive. It scans all the
+keys in about 3.5ms. That is more than 5 times per screen update on a PAL 
+machine. 
+
+It is also 301 bytes smaller than the bin/keyboard_test.prg.
+
+## RESTORE key
+
+Additionally to the BASIC version,  it detects also the push down event on
+the RESTORE key, by implementing a custom NMI handler in assembly. As there
+is no way to detect the state of the key, only the key down event, the RESTORE
+label is highlighted only for about 0.13s, before it is turned back down to
+light blue, even if the key is held down.
+
+
+## Deliverables
+
+* **bin/keyboard_test_asm.prg**: A version of the application written in
+  assembly. Can be run directly on a C64 or emulator.
+* **res/keyboard_test_asm.png**: Screenshot of the application written in 
+  assembly in action.
+
+  ![Screenshot of the assembly application](res/keyboard_test_asm.png)
+
+* Source code (assembly compiled with cc65) is not (yet) publicly available.

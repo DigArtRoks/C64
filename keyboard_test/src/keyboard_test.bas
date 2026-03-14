@@ -21,7 +21,10 @@ print "{17 down}  pa{3 up}"
 ;   rm: row bitmask
 ;   im: inverted row bitmask
 ;   cm: col mask
-pa = 56320 : pb = 56321
+;   pa: PortA reg of CIA1
+;   pb: PortB reg of CIA1
+;   s7: PortA value for scanning row 7
+pa = 56320 : pb = 56321 : s7 = 127
 100 rm = 1
 
 ; Scan each row
@@ -31,6 +34,12 @@ for r = 0 to 7
 
 ; Read the column mask
   cm = peek(pb)
+
+; Increase the chance on detecting STOP + RESTORE by the NMI handler
+; by setting scanline in between to line 7. The KERNAL NMI handler
+; reads immediately the PortB register of CIA1, without setting up
+; the scanline using PortA of the CIA1.
+  poke pa, s7
 
   print "{lgrn}  " r "{lblu}";
 ; Print the column mask
