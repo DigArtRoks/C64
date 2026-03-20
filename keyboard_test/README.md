@@ -61,9 +61,11 @@ a limitation of the host (Windows in my case).
 
 ### C64U
 
-The keyboard fitted in the C64U implements something different.
-Ghost keys as seen on the C64 or VICE emulator do not occur using the 
-trick with 3 out of 4 keys.
+The keyboard fitted in the C64U implements the
+[N-Key Rollover](https://en.wikipedia.org/wiki/Key_rollover) (NKRO) feature.
+It means that for every key, there is a diode in the path when the row and the
+column line. Therefore, ghost keys as seen on the C64 or VICE emulator do not
+occur using the trick with 3 out of 4 keys.
 
 The application on the C64U reflects correctly the status of the keys,
 even if more than 5 are pressed at once.
