@@ -458,4 +458,58 @@ The second loop (line 7 to 9) reprints the data lines, between the 1st and
 
 Extending the quine can be done using the same approach as the previous one.
 
+
+## LIST revisited
+
+The trivial quine uses the list command:
+
+`10 list`
+
+But that is cheating. What if the `list` command is partially reimplemented in
+BASIC itself? And that programs lists then itself?
+
+Refer to the [BASIC technical details](https://www.c64-wiki.com/wiki/BASIC) to
+understand how BASIC lines are stored in memory. BASIC lines start at address
+2049. A BASIC line has the following format:
+
+* Bytes 0 and 1 are the memory address for the next line. When they are
+  0, the end of the program is reached.
+* Bytes 2 and 3 are the BASIC line number in binary format. This needs to be
+  printed.
+* Bytes 4 to n-1 is the instruction using BASIC tokens.
+* Byte n is 0 and a terminator. It indicates the end of the BASIC line.
+
+For bytes 4 to n-1, values lower than 128 can just be printed again using
+`chr$()`. Values 128 and above are the BASIC tokens, referring to a BASIC
+keyword. These must be expanded to the full word.
+
+Given that information, the minimum quine looks like:
+
+```
+0 a=2049: rem c64 quine, list revisited
+2 if peek(a)=0 and peek(a+1)=0 then end
+4 a=a+2: l=peek(a)+256*peek(a+1)
+6 print mid$(str$(l),2) " ";: a=a+2
+8 v=peek(a): a=a+1
+10 if v=0   then print         : goto 2
+12 if v<128 then print chr$(v);: goto 8
+14 if v=167 then print "then"; : goto 8
+16 if v=153 then print "print";: goto 8
+18 if v=137 then print "goto"; : goto 8
+20 if v=139 then print "if";   : goto 8
+22 if v=178 then print "=";    : goto 8
+24 if v=170 then print "+";    : goto 8
+26 if v=194 then print "peek"; : goto 8
+28 if v=172 then print "*";    : goto 8
+30 if v=179 then print "<";    : goto 8
+32 if v=196 then print "str$"; : goto 8
+34 if v=199 then print "chr$"; : goto 8
+36 if v=202 then print "mid$"; : goto 8
+38 if v=143 then print "rem";  : goto 8
+40 if v=175 then print "and";  : goto 8
+42 if v=128 then print "end";  : goto 8
+```
+
+![Screenshot LIST revisited](res/quine_list_revisited.png)
+
 So... that's it for the moment.

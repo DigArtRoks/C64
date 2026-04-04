@@ -38,6 +38,10 @@ They have been described before by Daniele Olmisani on
 
 ![Screenshot generic final](res/quine_generic_final.png)
 
+## LIST revisited
+
+![Screenshot LIST revisited](res/quine_list_revisited.png)
+
 
 ## Typing over the code
 
